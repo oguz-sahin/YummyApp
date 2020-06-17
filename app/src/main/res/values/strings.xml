@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">YummyApp</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="merhaba">Merhaba,</string>
+    <string name="girisYapText">Giriş Yap</string>
+    <string name="enLezzetliLoginText">En Lezzetli En Uygun Lezzetler"</string>
+    <string name="epostaText">Eposta</string>
+    <string name="sifreText">Şifre</string>
+    <string name="KayıtOlText">Kayıt ol</string>
+    <string name="HesabınızYokmuText">Hesabınız yok mu?</string>
+    <string name="sifreUnuttumText">Şifremi Unuttum</string>
+    <string name="bugünneyiyiyelim">Bugün ne sipariş vermek istersin?</string>
+    <string name="title">Travel World</string>
+    //Bottommenu strings
+    <string name="anasayfa">Anasayfa</string>
+    <string name="talepler">Talepler</string>
+    <string name="sepetim">Sepetim</string>
+    <string name="profilim">Profilim</string>
+
+    //Home fragment strings
+    <string name="canımneistiyortext">Canın ne istiyor?</string>
+    <string name="aramayap">Arama Yap</string>
+
 </resources>

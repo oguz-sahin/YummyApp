@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_home"
+        android:enabled="true"
+        android:icon="@drawable/ic_android"
+        android:title="@string/anasayfa" />
+
+    <item
+        android:id="@+id/action_sepetim"
+        android:enabled="true"
+        android:icon="@drawable/ic_search"
+        android:title="@string/sepetim" />
+
+    <item
+        android:id="@+id/action_talep"
+        android:enabled="true"
+        android:icon="@drawable/ic_android"
+        android:title="@string/talepler" />
+
+    <item
+        android:id="@+id/action_profile"
+        android:enabled="true"
+        android:icon="@drawable/ic_android"
+        android:title="@string/profilim" />
+
+
+</menu>
