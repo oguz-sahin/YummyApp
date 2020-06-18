@@ -13,26 +13,29 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
+        fragmentTransact(HomeFragment())
+
+
         bottom_nav.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.action_home -> {
                     fragmentTransact(HomeFragment())
-                    item.isChecked = true
+
                     true
                 }
                 R.id.action_sepetim -> {
                     fragmentTransact(AdisyonFragment())
-                    item.isChecked = true
+
                     true
                 }
                 R.id.action_profile -> {
                     fragmentTransact(ProfileFragment())
-                    item.isChecked = true
+
                     true
                 }
                 R.id.action_talep -> {
                     fragmentTransact(ProfileFragment())
-                    item.isChecked = true
+
                     true
                 }
                 else -> TODO()

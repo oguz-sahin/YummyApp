@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
+import com.example.yummyapp.Login.Login
 import com.example.yummyapp.MainPage.MainActivity
 import com.example.yummyapp.R
 import kotlinx.android.synthetic.main.activity_intro_screen.*
@@ -35,12 +36,26 @@ class introScreen : AppCompatActivity() {
         preference = getSharedPreferences("IntroSlider", Context.MODE_PRIVATE)
 
         if (!preference.getBoolean(pref_show_intro, true)) {
-            startActivity(Intent(activity, MainActivity::class.java))
+            startActivity(Intent(activity, Login::class.java))
             finish()
         }
-        fragment1.setTitle("Welcome")
-        fragment2.setTitle("To CodeAndroid")
-        fragment3.setTitle("YouTube Channel")
+
+        fragment1.setFragment(
+            resources.getString(R.string.yakınındakilerikeşfet),
+            R.drawable.slide1,
+            resources.getString(R.string.yakındakikesfettext)
+        )
+        fragment2.setFragment(
+            resources.getString(R.string.lezzetliMenüseç),
+            R.drawable.slide2,
+            resources.getString(R.string.lezzetlimenütext)
+        )
+        fragment3.setFragment(
+            resources.getString(R.string.rezervasyonYap),
+            R.drawable.slide3,
+            resources.getString(R.string.rezervasyontext)
+        )
+
 
         adapter = myPagerAdapter(supportFragmentManager)
         adapter.list.add(fragment1)
@@ -82,19 +97,19 @@ class introScreen : AppCompatActivity() {
 
                 when (view_pager.currentItem) {
                     0 -> {
-                        indicator1.setTextColor(Color.BLACK)
+                        indicator1.setTextColor(resources.getColor(R.color.ColorMain))
                         indicator2.setTextColor(Color.GRAY)
                         indicator3.setTextColor(Color.GRAY)
                     }
                     1 -> {
                         indicator1.setTextColor(Color.GRAY)
-                        indicator2.setTextColor(Color.BLACK)
+                        indicator2.setTextColor(resources.getColor(R.color.ColorMain))
                         indicator3.setTextColor(Color.GRAY)
                     }
                     2 -> {
                         indicator1.setTextColor(Color.GRAY)
                         indicator2.setTextColor(Color.GRAY)
-                        indicator3.setTextColor(Color.BLACK)
+                        indicator3.setTextColor(resources.getColor(R.color.ColorMain))
                     }
                 }
 

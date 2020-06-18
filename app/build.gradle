@@ -7,6 +7,10 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
 
+    compileOptions {
+        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_1_8
+    }
 
     defaultConfig {
         applicationId "com.example.yummyapp"
@@ -25,10 +29,6 @@ android {
         }
     }
 
-    compileOptions {
-        targetCompatibility = "8"
-        sourceCompatibility = "8"
-    }
 
 }
 

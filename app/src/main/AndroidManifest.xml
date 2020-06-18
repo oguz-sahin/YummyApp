@@ -10,16 +10,22 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".OnboardScreen.introScreen">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".Register.RegisterActivity">
+
+        </activity>
+        <activity android:name=".OnboardScreen.introScreen"></activity>
+        <activity android:name=".Login.Login">
+
+        </activity>
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".Login.Login" />
-        <activity android:name=".SplashScreen">
+
 
         </activity>
         <activity android:name=".MainPage.MainActivity"></activity>

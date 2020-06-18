@@ -14,6 +14,7 @@
     <string name="sifreUnuttumText">Şifremi Unuttum</string>
     <string name="bugünneyiyiyelim">Bugün ne sipariş vermek istersin?</string>
     <string name="title">Travel World</string>
+
     //Bottommenu strings
     <string name="anasayfa">Anasayfa</string>
     <string name="talepler">Talepler</string>
@@ -23,5 +24,18 @@
     //Home fragment strings
     <string name="canımneistiyortext">Canın ne istiyor?</string>
     <string name="aramayap">Arama Yap</string>
+
+    //İntro Slider strings
+    <string name="rezervasyonYap">Rezervasyon Yap</string>
+    <string name="lezzetliMenüseç">Lezzetli Menülerden Seç</string>
+    <string name="yakınındakilerikeşfet">Yakınıdaki Yerleri Keşfet</string>
+    <string name="lezzetlimenütext">Yummy ile sipariş ettiğinizde, size özel kuponlar, özel ürünler ve ödüller vereceğiz.</string>
+    <string name="rezervasyontext">Sıra bekleme derdine son, yemeğinin hazır olmasını istediği saati seç hazırlayalım.</string>
+    <string name="yakındakikesfettext">İstediğiniz yemeği bulmanızı kolaylaştırıyoruz. Adresinizi girin ve gerisini bize bırakın.</string>
+    <string name="HesabınızvarmıText">Hesabınız var mı?</string>
+    <string name="name">Ad ve Soyad</string>
+    <string name="phone">Telefon</string>
+    <string name="guestLogin">Ziyaretçi Girişi</string>
+
 
 </resources>

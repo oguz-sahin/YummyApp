@@ -14,6 +14,8 @@ import kotlinx.android.synthetic.main.fragment_slider.*
 class SliderFragment : Fragment() {
 
     var pageTitle: String = ""
+    var pageImage: Int = 0
+    var pageDescription: String = ""
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -23,11 +25,16 @@ class SliderFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        fragment_title.text = pageTitle
+        slide_baslik_tv.text = pageTitle
+        slide_aciklama_tv.text = pageDescription
+        slide_iv.setImageResource(pageImage)
     }
 
-    fun setTitle(title: String) {
+    fun setFragment(title: String, image: Int, description: String) {
         pageTitle = title
+        pageImage = image
+        pageDescription = description
+
     }
 
 }

@@ -15,6 +15,10 @@
     <color name="BlackText">#4a4a4a</color>
     <color name="GreenButton">#417505</color>
     <color name="grayHint">#c1c0c9</color>
+    <color name="guestButtonColor">#eeeeee</color>
+    <color name="guestButtonTextColor">#373737</color>
+    #373737
+
 
 
 </resources>
