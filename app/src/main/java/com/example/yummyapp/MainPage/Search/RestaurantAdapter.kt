@@ -29,6 +29,7 @@ class RestaurantAdapter(var List: List<Data>, var context: Context) :
             .into(holder.iv)
         holder.restaurant_name_tv.text = List[position].name
         holder.kitchen_tv.text = List[position].kitchenType
+
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {

@@ -6,10 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.yummyapp.Constans
-import com.example.yummyapp.MainPage.Model.RestaurantModel
+import com.example.yummyapp.MainPage.Model.viewModel
 import com.example.yummyapp.R
 import kotlinx.android.synthetic.main.fragment_near_fragmet.*
 
@@ -17,13 +18,12 @@ import kotlinx.android.synthetic.main.fragment_near_fragmet.*
 class nearFragmet : Fragment() {
 
 
+    lateinit var viewModel: viewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_near_fragmet, container, false)
-        var RestaurantModel =
-            arguments?.getSerializable(Constans.RestaurantModel) as RestaurantModel
         return view
     }
 
@@ -34,13 +34,21 @@ class nearFragmet : Fragment() {
             activity?.getSharedPreferences(Constans.PREFS_ClickCode, Context.MODE_PRIVATE)
         val code = prefences?.getInt(Constans.Code_KEY_NAME, 1)
 
-        if (code == 1) {
-            recyclerview.adapter = GridAdapter(RestaurantModel.data, activity!!)
-            recyclerview.layoutManager = GridLayoutManager(activity, 2)
-        } else if (code == 2) {
-            recyclerview.adapter = RestaurantAdapter(RestaurantModel.data, activity!!)
-            recyclerview.layoutManager = LinearLayoutManager(activity)
-        }
+        viewModel = ViewModelProviders.of(this)
+            .get(com.example.yummyapp.MainPage.Model.viewModel::class.java)
+        viewModel.restaurants.observe(activity!!, Observer {
+
+            if (code == 1) {
+                recyclerview.adapter = RestaurantAdapter(it.data, activity!!)
+                recyclerview.layoutManager = LinearLayoutManager(activity)
+            } else if (code == 2) {
+                recyclerview.adapter = RestaurantAdapter(it.data, activity!!)
+                recyclerview.layoutManager = LinearLayoutManager(activity)
+            }
+
+
+        })
+
 
     }
 
