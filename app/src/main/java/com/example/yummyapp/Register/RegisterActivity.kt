@@ -15,7 +15,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class RegisterActivity : AppCompatActivity() {
-    private val apiClient: ApiService by lazy { ApiClient.getApiClient() }
+    private val apiClient: RegisterApiService by lazy { RegisterApiClient.getApiClient() }
     var status: Boolean = false
 
 
@@ -47,14 +47,14 @@ class RegisterActivity : AppCompatActivity() {
                     ) {
 
                         if (response.isSuccessful) {
-
+                            val data = response.body()?.data
                             status = response.body()!!.status
-                            Log.e("status", status.toString())
-                            Log.e("token", response.body()!!.data.token)
-                            if (status) {
+                            Log.e("data", data.toString())
+                            Log.e("message", response.body()?.message)
 
-                                editor.putString(Constans.KEY_NAME, response.body()!!.data.token)
-                                editor.commit()
+                            if (status) {
+                                editor.putString(Constans.KEY_NAME, data?.token)
+                                editor.apply()
                                 startActivity(
                                     Intent(
                                         this@RegisterActivity,
@@ -64,7 +64,7 @@ class RegisterActivity : AppCompatActivity() {
 
                             } else {
 
-                                Log.e("status les,", status.toString())
+                                Log.e("status", status.toString())
 
                             }
 

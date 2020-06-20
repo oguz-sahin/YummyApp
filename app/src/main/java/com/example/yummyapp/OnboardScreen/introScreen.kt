@@ -12,7 +12,6 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.example.yummyapp.Login.Login
-import com.example.yummyapp.MainPage.MainActivity
 import com.example.yummyapp.R
 import kotlinx.android.synthetic.main.activity_intro_screen.*
 
@@ -120,7 +119,7 @@ class introScreen : AppCompatActivity() {
     }
 
     fun goToDashboard() {
-        startActivity(Intent(activity, MainActivity::class.java))
+        startActivity(Intent(activity, Login::class.java))
         finish()
         val editor = preference.edit()
         editor.putBoolean(pref_show_intro, false)

@@ -1,12 +1,12 @@
-package com.example.yummyapp.Register
+package com.example.yummyapp.MainPage.UserApi
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-
 object ApiClient {
 
-    const val BASE_URL = "http://news.wookweb.com/"
+
+    const val BASE_URL = "http://apiyummy.wookweb.com/"
 
     fun getApiClient(): ApiService {
         val retrofit = Retrofit.Builder()

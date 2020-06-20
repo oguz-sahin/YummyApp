@@ -5,8 +5,7 @@ import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
 
-interface ApiService {
-
+interface RegisterApiService {
 
     @POST("register")
     @FormUrlEncoded
@@ -16,6 +15,4 @@ interface ApiService {
         @Field("name") name: String,
         @Field("phone") phone: String
     ): Call<RegisterModel>
-
-
 }

@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.yummyapp.Constans.PREFS_FILENAME
 import com.example.yummyapp.MainPage.MainActivity
@@ -30,6 +31,7 @@ class SplashScreen : AppCompatActivity() {
 
         val prefences = getSharedPreferences(PREFS_FILENAME, Context.MODE_PRIVATE)
         val token = prefences.getString(Constans.KEY_NAME, "")
+        Log.e("token", token)
         if (token == "") {
             startActivity(Intent(this@SplashScreen, introScreen::class.java))
         } else {
@@ -37,9 +39,6 @@ class SplashScreen : AppCompatActivity() {
             startActivity(Intent(this@SplashScreen, MainActivity::class.java))
 
         }
-
-
-
 
     }
 

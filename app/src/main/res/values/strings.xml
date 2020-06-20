@@ -36,6 +36,8 @@
     <string name="name">Ad ve Soyad</string>
     <string name="phone">Telefon</string>
     <string name="guestLogin">Ziyaretçi Girişi</string>
+    <string name="Search">Arama Yap</string>
+    <string name="Filtrele">Filtrele</string>
 
 
 </resources>

@@ -36,17 +36,16 @@ class Login : AppCompatActivity() {
                     ) {
 
                         if (response.isSuccessful) {
-
                             if (response.body()!!.status) {
+                                Log.e("response", response.body().toString())
                                 startActivity(Intent(this@Login, MainActivity::class.java))
                             } else {
-
                                 Log.e("password ", "yanlış parola")
                             }
 
                         } else {
 
-                            Log.e("tag", "message")
+                            Log.e("hata", "response başarılı fakat bir şeyler ters gidiyor.")
                         }
                     }
 

@@ -8,9 +8,7 @@ import androidx.fragment.app.Fragment
 import com.example.yummyapp.R
 import kotlinx.android.synthetic.main.fragment_slider.*
 
-/**
- * A simple [Fragment] subclass.
- */
+
 class SliderFragment : Fragment() {
 
     var pageTitle: String = ""

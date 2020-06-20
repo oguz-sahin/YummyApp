@@ -17,8 +17,10 @@
     <color name="grayHint">#c1c0c9</color>
     <color name="guestButtonColor">#eeeeee</color>
     <color name="guestButtonTextColor">#373737</color>
-    #373737
-
+    <color name="toolbarColor">#eeeeee</color>
+    <color name="tabTextGray">#94373737</color>
+    <color name="tabUnderGray">#f8f8f8</color>
+    <color name="rateColor">#ffc700</color>
 
 
 </resources>
