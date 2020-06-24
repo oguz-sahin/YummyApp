@@ -15,6 +15,7 @@ class TabAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
 
     override fun getPageTitle(position: Int): CharSequence? = fragmentTitleList[position]
 
+
     fun addFragment(fragment: Fragment, title: String) {
         fragmentList.add(fragment)
         fragmentTitleList.add(title)

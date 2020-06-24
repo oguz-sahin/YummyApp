@@ -9,21 +9,23 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_iv"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="48dp"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:layout_marginStart="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_40sdp"
         android:src="@drawable/profileimage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+
+        android:fontFamily="@font/exo_semibold"
         android:id="@+id/hello_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/merhaba"
         android:textColor="@color/White"
-        android:textSize="25sp"
+        android:textSize="@dimen/_20sdp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.051"
@@ -32,12 +34,14 @@
 
 
     <TextView
+
+        android:layout_width="@dimen/_130sdp"
         android:id="@+id/username_tv"
-        android:layout_width="150dp"
+        android:fontFamily="@font/exo_semibold"
         android:layout_height="wrap_content"
         android:text="Tahir"
         android:textColor="@color/White"
-        android:textSize="25sp"
+        android:textSize="@dimen/_20sdp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/profile_iv"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,29 +51,31 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
+        android:layout_width="@dimen/_250sdp"
         android:id="@+id/neyemek_tv"
-        android:layout_width="318dp"
-        android:layout_height="165dp"
-        android:layout_marginTop="32dp"
+        android:layout_height="@dimen/_140sdp"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:fontFamily="@font/exo_semibold"
         android:letterSpacing="-0.02"
         android:text="@string/bugünneyiyiyelim"
         android:textColor="@color/White"
-        android:textSize="45sp"
+        android:textSize="@dimen/_35sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/profile_iv"
         app:layout_constraintTop_toBottomOf="@+id/username_tv" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/textInputEditText"
+
+        android:id="@+id/search_et"
+        android:layout_width="@dimen/_250sdp"
         style="@style/etButtonStyle"
-        android:layout_width="315dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="40dp"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:drawableEnd="@drawable/ic_search"
         android:background="@drawable/corneredittext"
-        android:drawableStart="@drawable/ic_search"
-        android:drawableLeft="@drawable/ic_search"
-        android:drawablePadding="5dp"
+        android:fontFamily="@font/exo"
+
         android:hint="@string/canımneistiyortext"
         android:inputType="text"
         android:textColorHint="@color/grayHint"
@@ -80,17 +86,20 @@
         app:layout_constraintTop_toBottomOf="@+id/neyemek_tv" />
 
     <com.google.android.material.button.MaterialButton
-        android:layout_width="315dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="12dp"
+        android:id="@+id/search_button"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:fontFamily="@font/exo_semibold"
         android:backgroundTint="@color/ColorMain"
+        android:textSize="@dimen/_12sdp"
         android:text="@string/aramayap"
         android:textAllCaps="false"
-        app:cornerRadius="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/textInputEditText"
+        app:cornerRadius="@dimen/_8sdp"
+        app:layout_constraintEnd_toEndOf="@+id/search_et"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/textInputEditText"
-        app:layout_constraintTop_toBottomOf="@+id/textInputEditText" />
+        app:layout_constraintStart_toStartOf="@+id/search_et"
+        app:layout_constraintTop_toBottomOf="@+id/search_et" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

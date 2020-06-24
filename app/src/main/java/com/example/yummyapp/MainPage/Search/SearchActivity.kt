@@ -1,59 +1,59 @@
 package com.example.yummyapp.MainPage.Search
 
-import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
-import com.example.yummyapp.Constans
+import com.example.yummyapp.MainPage.MainActivity
 import com.example.yummyapp.MainPage.Model.viewModel
-import com.example.yummyapp.MainPage.Service.ApiClient
-import com.example.yummyapp.MainPage.Service.ApiService
 import com.example.yummyapp.R
 import kotlinx.android.synthetic.main.activity_search.*
 
 class SearchActivity : AppCompatActivity() {
     private lateinit var adapter: TabAdapter
-    lateinit var viewModel: viewModel
+    private lateinit var vm: viewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
 
 
-        val apiClient: ApiService = ApiClient.getApiClient()
-        val tokenPref = getSharedPreferences(Constans.PREFS_FILENAME, Context.MODE_PRIVATE)
-        val token = tokenPref.getString(Constans.KEY_NAME, "")
+        vm = ViewModelProviders.of(this).get(viewModel::class.java)
 
-        val codePref = getSharedPreferences(Constans.PREFS_ClickCode, Context.MODE_PRIVATE)
-        val editor = codePref.edit()
-        editor.putInt(Constans.Code_KEY_NAME, 1)
-        editor.commit()
+        vm.CodeControl(1)
 
-        viewModel = ViewModelProviders.of(this)
-            .get(com.example.yummyapp.MainPage.Model.viewModel::class.java)
-        viewModel.getRestaurantsWithToken(token!!)
+        if (savedInstanceState == null) {
+            adapter = TabAdapter(supportFragmentManager)
 
-        adapter = TabAdapter(supportFragmentManager)
-
-        adapter.apply {
-            addFragment(nearFragmet(), "Yakınımda")
-            addFragment(AllFragment(), "Tümü")
-            addFragment(PopularFragment(), "En Popüler")
-            addFragment(LikedFragment(), "En Beğenilenler")
-        }
-        view_pager.adapter = adapter
-        tabLayout.setupWithViewPager(view_pager)
+            adapter.apply {
+                addFragment(nearFragmet(), "Yakınımda")
+                addFragment(AllFragment(), "Tümü")
+                addFragment(PopularFragment(), "En Popüler")
+                addFragment(LikedFragment(), "En Beğenilenler")
+            }
+            view_pager.adapter = adapter
+            tabLayout.setupWithViewPager(view_pager)
 
 
-        grid_icon.setOnClickListener {
-            editor.putInt(Constans.Code_KEY_NAME, 1)
-            editor.commit()
-        }
-        list_icon.setOnClickListener {
-            editor.putInt(Constans.Code_KEY_NAME, 2)
-            editor.commit()
-
+            grid_icon.setOnClickListener {
+                vm.CodeControl(1)
+                Log.e("tag", "1")
+            }
+            list_icon.setOnClickListener {
+                Log.e("tag", "2")
+                vm.CodeControl(2)
+            }
 
         }
 
+        back.setOnClickListener {
+
+            startActivity(Intent(this, MainActivity::class.java))
+
+        }
+
+
+        //  supportFragmentManager.beginTransaction().add(R.id.coordinatorLAyout,SearchFragment()).commit()
     }
 }

@@ -17,6 +17,10 @@ class Repository(val application: Application) {
 
     val showProgress = MutableLiveData<Boolean>()
     val restaurants = MutableLiveData<RestaurantModel>()
+    /* val clickCode= MutableLiveData<Int>()
+     fun CodeControl(Code:Int){
+     clickCode.value=Code
+     }*/
 
     fun changeState() {
         showProgress.value = !(showProgress.value != null && showProgress.value!!)
@@ -44,7 +48,6 @@ class Repository(val application: Application) {
                 restaurants.value = response.body()
                 showProgress.value = false
             }
-
 
         })
 

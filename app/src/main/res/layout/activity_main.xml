@@ -23,6 +23,7 @@
         app:itemTextColor="@drawable/navigationchecked"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/bottommenu"
+        android:fontFamily="@font/exo"
 
         />
 

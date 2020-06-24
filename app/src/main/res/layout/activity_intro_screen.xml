@@ -15,7 +15,7 @@
     <View
         android:id="@+id/divider"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="@dimen/_1sdp"
         android:layout_above="@+id/button_layout"
         android:background="@color/ColorMain" />
 
@@ -32,7 +32,7 @@
             android:background="@null"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:textColor="@color/ColorMain"
-            android:text="SKIP" />
+            android:text="Geç" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -41,34 +41,40 @@
             android:orientation="horizontal">
 
             <TextView
+                android:fontFamily="@font/exo"
                 android:id="@+id/indicator1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="-"
                 android:textColor="@color/ColorMain"
-                android:textSize="30sp"
+                android:textSize="@dimen/_25sdp"
                 android:textStyle="bold" />
 
             <TextView
+
+                android:fontFamily="@font/exo"
                 android:id="@+id/indicator2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="-"
                 android:textColor="@android:color/darker_gray"
-                android:textSize="30sp"
+                android:textSize="@dimen/_25sdp"
                 android:textStyle="bold" />
 
             <TextView
+
+                android:fontFamily="@font/exo"
                 android:id="@+id/indicator3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="-"
                 android:textColor="@android:color/darker_gray"
-                android:textSize="30sp"
+                android:textSize="@dimen/_25sdp"
                 android:textStyle="bold" />
         </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
+            android:fontFamily="@font/exo"
             android:id="@+id/btn_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -77,7 +83,7 @@
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:background="@null"
             android:textColor="@color/ColorMain"
-            android:text="NEXT" />
+            android:text="İleri" />
     </RelativeLayout>
 
 </RelativeLayout>

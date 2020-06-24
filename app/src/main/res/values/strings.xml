@@ -7,7 +7,7 @@
     <string name="merhaba">Merhaba,</string>
     <string name="girisYapText">Giriş Yap</string>
     <string name="enLezzetliLoginText">En Lezzetli En Uygun Lezzetler"</string>
-    <string name="epostaText">Eposta</string>
+    <string name="epostaText">E-posta</string>
     <string name="sifreText">Şifre</string>
     <string name="KayıtOlText">Kayıt ol</string>
     <string name="HesabınızYokmuText">Hesabınız yok mu?</string>
@@ -38,6 +38,8 @@
     <string name="guestLogin">Ziyaretçi Girişi</string>
     <string name="Search">Arama Yap</string>
     <string name="Filtrele">Filtrele</string>
+    <string name="yorumYap">Yorum Yap</string>
+    <string name="Categories">Kategoriler</string>
 
 
 </resources>

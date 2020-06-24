@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorSearch"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainPage.Search.SearchFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/toolbarColor">
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="35dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="8dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_back"
+                app:layout_constraintBottom_toBottomOf="@+id/search_et"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/search_et"
+                app:layout_constraintVertical_bias="0.666" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/search_et"
+                android:layout_width="290dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/corneredittext"
+                android:drawableStart="@drawable/ic_search"
+                android:drawablePadding="5dp"
+                android:hint="@string/Search"
+                android:inputType="text"
+                android:textColor="@color/ColorMain"
+                android:textColorHint="@color/grayHint"
+                android:textSize="15.5sp"
+                app:layout_constraintEnd_toStartOf="@+id/konum_icon"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/back"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/konum_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/corneredittext"
+                app:layout_constraintBottom_toBottomOf="@+id/search_et"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/search_et"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ImageView
+                android:id="@+id/icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_location"
+                app:layout_constraintBottom_toBottomOf="@+id/konum_icon"
+                app:layout_constraintEnd_toEndOf="@+id/konum_icon"
+                app:layout_constraintStart_toStartOf="@+id/konum_icon"
+                app:layout_constraintTop_toTopOf="@+id/konum_icon" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/toolbarColor"
+            app:tabGravity="fill"
+            app:tabIndicatorHeight="0dp"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="@color/ColorMain"
+            app:tabTextAppearance="@style/TabLayoutStyle"
+            app:tabTextColor="@color/tabTextGray">
+
+        </com.google.android.material.tabs.TabLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/tabUnderGray">
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="16dp"
+                android:background="@color/tabUnderGray"
+                android:scaleType="centerCrop"
+                android:src="@drawable/filter"
+                android:tint="@color/ColorMain"
+                app:layout_constraintBottom_toBottomOf="@+id/materialButton"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/materialButton"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="@string/Filtrele"
+                android:textAllCaps="false"
+                android:textColor="#ce4a4a4a"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@+id/imageButton"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/map_icon"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/tabUnderGray"
+                android:src="@drawable/ic_map_active"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/grid_icon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="8dp"
+                android:background="@color/tabUnderGray"
+                android:src="@drawable/ic_grid_active"
+                app:layout_constraintBottom_toBottomOf="@+id/list_icon"
+                app:layout_constraintEnd_toStartOf="@+id/list_icon"
+                app:layout_constraintTop_toTopOf="@+id/list_icon" />
+
+            <ImageView
+                android:id="@+id/list_icon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/ic_list_active"
+                app:layout_constraintBottom_toBottomOf="@+id/map_icon"
+                app:layout_constraintEnd_toStartOf="@+id/map_icon"
+                app:layout_constraintTop_toTopOf="@+id/map_icon" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

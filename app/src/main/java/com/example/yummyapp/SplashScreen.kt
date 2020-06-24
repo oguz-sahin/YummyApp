@@ -34,10 +34,11 @@ class SplashScreen : AppCompatActivity() {
         Log.e("token", token)
         if (token == "") {
             startActivity(Intent(this@SplashScreen, introScreen::class.java))
+            finish()
         } else {
 
             startActivity(Intent(this@SplashScreen, MainActivity::class.java))
-
+            finish()
         }
 
     }

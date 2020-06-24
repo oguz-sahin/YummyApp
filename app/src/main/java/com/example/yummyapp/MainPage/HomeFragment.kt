@@ -1,6 +1,7 @@
 package com.example.yummyapp.MainPage
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.yummyapp.Constans
+import com.example.yummyapp.MainPage.Search.SearchActivity
 import com.example.yummyapp.MainPage.UserApi.ApiClient
 import com.example.yummyapp.MainPage.UserApi.ApiService
 import com.example.yummyapp.MainPage.UserApi.UserModel
@@ -17,9 +19,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-/**
- * A simple [Fragment] subclass.
- */
+
 class HomeFragment : Fragment() {
     private val apiClient: ApiService by lazy { ApiClient.getApiClient() }
     override fun onCreateView(
@@ -46,8 +46,14 @@ class HomeFragment : Fragment() {
                 username_tv.text = response.body()?.data?.name
             }
 
-
         })
+
+        search_button.setOnClickListener {
+            val searchedWord = search_et.text.toString()
+
+            startActivity(Intent(this.activity, SearchActivity::class.java))
+
+        }
 
 
 

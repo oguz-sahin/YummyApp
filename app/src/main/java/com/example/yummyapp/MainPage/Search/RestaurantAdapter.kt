@@ -1,17 +1,16 @@
 package com.example.yummyapp.MainPage.Search
 
-import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.yummyapp.MainPage.Model.Data
 import com.example.yummyapp.R
 import kotlinx.android.synthetic.main.item_list.view.*
 
-class RestaurantAdapter(var List: List<Data>, var context: Context) :
+class RestaurantAdapter(var List: List<Data>, var itemClick: itemClick) :
     RecyclerView.Adapter<RestaurantAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -24,16 +23,29 @@ class RestaurantAdapter(var List: List<Data>, var context: Context) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        Glide.with(context)
+        Log.e("url", "https://yummy.wookweb.com/assets/img/restoran/" + List[position].image)
+
+        // Picasso.get().load("http://yummy.wookweb.com/assets/restoran.jpg").into(holder.image)
+        Glide.with(holder.image.context)
             .load("https://yummy.wookweb.com/assets/img/restoran/" + List[position].image)
-            .into(holder.iv)
+            .into(holder.image)
         holder.restaurant_name_tv.text = List[position].name
-        holder.kitchen_tv.text = List[position].kitchenType
+
+        if (List[position].kitchenType == "4") {
+            holder.kitchen_tv.text = "Türk Mutfağı"
+        }
+
+
+        holder.itemView.setOnClickListener {
+
+            itemClick.click(List[position])
+
+        }
 
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var iv = view.iv as ImageView
+        var image = view.item_list_iv
         var restaurant_name_tv = view.restaurant_name_tv
         var kitchen_tv = view.kithcen_tv
         var status = view.status_tv

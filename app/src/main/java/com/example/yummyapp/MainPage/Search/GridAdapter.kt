@@ -1,10 +1,10 @@
 package com.example.yummyapp.MainPage.Search
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.yummyapp.MainPage.Model.Data
@@ -12,7 +12,7 @@ import com.example.yummyapp.R
 import kotlinx.android.synthetic.main.item_grid.view.*
 
 
-class GridAdapter(var List: List<Data>, var context: Context) :
+class GridAdapter(var List: List<Data>, var context: Context, var itemClick: itemClick) :
     RecyclerView.Adapter<GridAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -27,14 +27,22 @@ class GridAdapter(var List: List<Data>, var context: Context) :
         Glide.with(context)
             .load("https://yummy.wookweb.com/assets/img/restoran/" + List[position].image)
             .into(holder.restaurant_iv)
+
+        Log.e("tres", "http://yummy.wookweb.com/assets/img/restoran/" + List[position].image)
+        // Picasso.get().load("http://yummy.wookweb.com/assets/restoran.jpg").into(holder.restaurant_iv)
         holder.restaurant_name_tv.text = List[position].name
         holder.kitchen_tv.text = List[position].kitchenType
+
+        holder.itemView.setOnClickListener {
+
+            itemClick.click(List[position])
+        }
 
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        var restaurant_iv = view.iv as ImageView
+        var restaurant_iv = view.iv
         var restaurant_name_tv = view.restaurant_name_tv
         var status_tv = view.status_tv
         var kitchen_tv = view.kithcen_tv
