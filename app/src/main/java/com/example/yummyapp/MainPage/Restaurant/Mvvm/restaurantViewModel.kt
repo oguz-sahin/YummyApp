@@ -1,4 +1,4 @@
-package com.example.yummyapp.MainPage.Restaurant
+package com.example.yummyapp.MainPage.Restaurant.Mvvm
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -8,12 +8,17 @@ import com.example.yummyapp.MainPage.Model.*
 
 class restaurantViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val repository = restaurantRepository(application)
+    private val repository =
+        restaurantRepository(
+            application
+        )
     val restaurantPhotos: LiveData<photosModel>
     val restaurantResponse: LiveData<restaurantResponse>
     val restaurantComment: LiveData<CommentModel>
     val restaurantMenuCategories: LiveData<CategoryModel>
     val data = MutableLiveData<Data>()
+    val addFavoriteStatus: LiveData<FavoriteStatusModel>
+    val deleteFavoriteStatus: LiveData<FavoriteStatusModel>
 
     fun putData(putteddata: Data) {
         data.value = putteddata
@@ -24,6 +29,8 @@ class restaurantViewModel(application: Application) : AndroidViewModel(applicati
         this.restaurantResponse = repository.restaurantInformation
         this.restaurantComment = repository.restaurantComments
         this.restaurantMenuCategories = repository.restaurantMenuCategories
+        this.addFavoriteStatus = repository.addFavoriteStatus
+        this.deleteFavoriteStatus = repository.deleteFavoriteStatus
     }
 
     fun getRestorantsPhotosWithToken(token: String, restaurantId: String) {
@@ -47,5 +54,16 @@ class restaurantViewModel(application: Application) : AndroidViewModel(applicati
     fun getRestaurantMenuCategories(restaurantId: String, token: String) {
         repository.getRestaurantMenuCategories(restaurantId, token)
     }
+
+    fun addFavorite(token: String, restaurantId: String) {
+
+        repository.addFavorite(token, restaurantId)
+    }
+
+    fun deleteFavorite(token: String, restaurantId: String) {
+
+        repository.deleteFavorite(token, restaurantId)
+    }
+
 
 }

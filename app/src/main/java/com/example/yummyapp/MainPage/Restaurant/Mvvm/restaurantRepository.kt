@@ -1,12 +1,9 @@
-package com.example.yummyapp.MainPage.Restaurant
+package com.example.yummyapp.MainPage.Restaurant.Mvvm
 
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.example.yummyapp.MainPage.Model.CategoryModel
-import com.example.yummyapp.MainPage.Model.CommentModel
-import com.example.yummyapp.MainPage.Model.photosModel
-import com.example.yummyapp.MainPage.Model.restaurantResponse
+import com.example.yummyapp.MainPage.Model.*
 import com.example.yummyapp.MainPage.Service.ApiClient
 import com.example.yummyapp.MainPage.Service.ApiService
 import retrofit2.Call
@@ -21,6 +18,8 @@ class restaurantRepository(application: Application) {
     val restaurantInformation = MutableLiveData<restaurantResponse>()
     val restaurantComments = MutableLiveData<CommentModel>()
     val restaurantMenuCategories = MutableLiveData<CategoryModel>()
+    val addFavoriteStatus = MutableLiveData<FavoriteStatusModel>()
+    val deleteFavoriteStatus = MutableLiveData<FavoriteStatusModel>()
 
     fun getRestaurantPhotosWithToken(token: String, restarunatID: String) {
         val BASE_URL = "http://apiyummy.wookweb.com/"
@@ -48,7 +47,7 @@ class restaurantRepository(application: Application) {
 
         val apiClient: ApiService by lazy { ApiClient.getApiClient() }
 
-        apiClient.getRestaurantsInformation("Baerer " + token, restarunatID)
+        apiClient.getRestaurantsInformation("Bearer " + token, restarunatID)
             .enqueue(object : Callback<restaurantResponse> {
                 override fun onFailure(call: Call<restaurantResponse>, t: Throwable) {
                     Log.e("getREstaurants Onfa", t.message)
@@ -60,6 +59,7 @@ class restaurantRepository(application: Application) {
                 ) {
 
                     restaurantInformation.value = response.body()
+                    Log.e("info restorant", response.body().toString())
                 }
 
 
@@ -72,7 +72,7 @@ class restaurantRepository(application: Application) {
 
         val apiClient: ApiService by lazy { ApiClient.getApiClient() }
 
-        apiClient.getRestaurantsComments(restaurantId, "Baerer " + token)
+        apiClient.getRestaurantsComments(restaurantId, "Bearer " + token)
             .enqueue(object : Callback<CommentModel> {
                 override fun onFailure(call: Call<CommentModel>, t: Throwable) {
                     Log.e("rEstaurants Comment api", t.message)
@@ -84,6 +84,7 @@ class restaurantRepository(application: Application) {
                 ) {
 
                     restaurantComments.value = response.body()
+
                 }
 
 
@@ -106,6 +107,55 @@ class restaurantRepository(application: Application) {
                     response: Response<CategoryModel>
                 ) {
                     restaurantMenuCategories.value = response.body()
+                }
+
+
+            })
+
+
+    }
+
+    fun addFavorite(token: String, restarunatID: String) {
+
+        val apiClient: ApiService by lazy { ApiClient.getApiClient() }
+
+        apiClient.addFavorite("Bearer " + token, restarunatID)
+            .enqueue(object : Callback<FavoriteStatusModel> {
+                override fun onFailure(call: Call<FavoriteStatusModel>, t: Throwable) {
+                    Log.e("on failere", t.message)
+                }
+
+                override fun onResponse(
+                    call: Call<FavoriteStatusModel>,
+                    response: Response<FavoriteStatusModel>
+                ) {
+                    Log.e("favorite add", response.body().toString())
+
+                }
+
+
+            })
+
+
+    }
+
+
+    fun deleteFavorite(token: String, restarunatID: String) {
+
+        val apiClient: ApiService by lazy { ApiClient.getApiClient() }
+
+        apiClient.deleteFavorite("Bearer " + token, restarunatID)
+            .enqueue(object : Callback<FavoriteStatusModel> {
+                override fun onFailure(call: Call<FavoriteStatusModel>, t: Throwable) {
+                    Log.e("on failere dekete", t.message)
+                }
+
+                override fun onResponse(
+                    call: Call<FavoriteStatusModel>,
+                    response: Response<FavoriteStatusModel>
+                ) {
+                    Log.e("favorite delete", response.body().toString())
+
                 }
 
 
