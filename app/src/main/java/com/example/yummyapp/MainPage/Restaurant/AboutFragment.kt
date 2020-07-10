@@ -1,6 +1,7 @@
 package com.example.yummyapp.MainPage.Restaurant
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,25 +11,27 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.yummyapp.Constans
+import com.example.yummyapp.MainPage.Restaurant.Mvvm.restaurantViewModel
 import com.example.yummyapp.R
 import kotlinx.android.synthetic.main.fragment_about.*
 
-/**
- * A simple [Fragment] subclass.
- */
-class AboutFragment : Fragment() {
+
+class AboutFragment : Fragment(), itemClickPhoto {
 
 
     private lateinit var vm: restaurantViewModel
+    private lateinit var rv: RecyclerView
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_about, container, false)
+        val view = inflater.inflate(R.layout.fragment_about, container, false)
+        rv = view.findViewById(R.id.recyclerview)
+        return view
     }
 
 
@@ -41,12 +44,15 @@ class AboutFragment : Fragment() {
         val token = tokenPref.getString(Constans.KEY_NAME, "")
 
 
-        vm.data.observe(requireActivity(), Observer {
-            //Live data id alma fakat çalışmıyor
-            Log.e("tag", it.id)
+        //RestaurantId
+        val prefences =
+            activity?.getSharedPreferences(Constans.RESTAURANT_FILE, Context.MODE_PRIVATE)
+        val restaurantId = prefences?.getString(Constans.RestaurantID, "0")
+
+        // val vm = ViewModelProviders.of(this).get(restaurantViewModel::class.java)
 
 
-            vm.getRestaurantInformation(token!!, it.id)
+        vm.getRestaurantInformation(token!!, restaurantId!!)
             vm.restaurantResponse.observe(activity!!, Observer {
 
                 restaurant_name_tv.text = it.data.name
@@ -57,18 +63,21 @@ class AboutFragment : Fragment() {
             })
 
 
-            vm.getRestorantsPhotosWithToken(token, it.id)
+        vm.getRestorantsPhotosWithToken(token, restaurantId)
             vm.restaurantPhotos.observe(activity!!, Observer {
 
                 Log.e("tag", it.toString())
-                recyclerview.adapter = PhotosAdapter(it.data, activity!!)
-                recyclerview.layoutManager = GridLayoutManager(activity, 2)
+                rv.adapter = PhotosAdapter(it.data, activity!!, this)
+                rv.layoutManager = GridLayoutManager(activity, 2)
 
             })
 
 
-        })
+    }
 
+    override fun İtemClick() {
+
+        startActivity(Intent(this.activity, RestaurantPhotosActivity::class.java))
 
     }
 

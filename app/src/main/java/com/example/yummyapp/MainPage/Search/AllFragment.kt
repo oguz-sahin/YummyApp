@@ -9,76 +9,73 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.yummyapp.Constans
-import com.example.yummyapp.MainPage.Model.Data
-import com.example.yummyapp.MainPage.Model.RestaurantModel
+import com.example.yummyapp.MainPage.Model.AllRestaurantData
 import com.example.yummyapp.MainPage.Model.viewModel
 import com.example.yummyapp.MainPage.Restaurant.restaurantActivity
-import com.example.yummyapp.MainPage.Service.ApiClient
-import com.example.yummyapp.MainPage.Service.ApiService
 import com.example.yummyapp.R
-import kotlinx.android.synthetic.main.fragment_all.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
-class AllFragment : Fragment(), itemClick {
-    private val apiClient: ApiService by lazy { ApiClient.getApiClient() }
+class AllFragment(var searchWord: String) : Fragment(), itemClick {
+
     private lateinit var vm: viewModel
-    private var code = 0
-
+    private lateinit var rv: RecyclerView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_all, container, false)
+        rv = view.findViewById(R.id.recyclerview)
         return view
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        vm = ViewModelProviders.of(activity!!).get(viewModel::class.java)
+        vm = ViewModelProvider(activity!!).get(viewModel::class.java)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
+        Log.e("searchWord all", searchWord)
         val tokenPref =
             activity!!.getSharedPreferences(Constans.PREFS_FILENAME, Context.MODE_PRIVATE)
         val token = tokenPref.getString(Constans.KEY_NAME, "")
-        vm.getRestaurantsWithToken("Bearer " + token)
 
-        vm.Code.observe(activity!!, Observer {
-            code = it
-            Log.e("tümü code", it.toString())
-        })
+        val arrayList = ArrayList<String>()
+        arrayList.add("0")
+        arrayList.add("4")
 
-        apiClient.getRestaurants("Baerer " + token).enqueue(object : Callback<RestaurantModel> {
-            override fun onFailure(call: Call<RestaurantModel>, t: Throwable) {
-                TODO("Not yet implemented")
-            }
+        vm.getAllRestaurants(token!!, "istanbul", searchWord, "asc", arrayList)
 
-            override fun onResponse(
-                call: Call<RestaurantModel>,
-                response: Response<RestaurantModel>
-            ) {
-                recyclerview.layoutManager = GridLayoutManager(activity, 2)
-                Log.e("it", response.body()?.data.toString())
-                recyclerview.adapter =
-                    GridAdapter(response.body()!!.data, activity!!, this@AllFragment)
-            }
 
+        vm.allRestaurants.observe(activity!!, Observer {
+            rv.layoutManager = GridLayoutManager(activity, 2)
+            Log.e("it", it.data.toString())
+            rv.adapter =
+                GridAdapter(it.data, activity!!, this@AllFragment)
 
         })
 
+
+        /* vm.Code.observe(activity!!, Observer {
+             code = it
+             Log.e("tümü code", it.toString())
+         })*/
     }
 
+    override fun click(Restaurant: AllRestaurantData) {
 
-    override fun click(Code: Data) {
+        val prefences =
+            activity?.getSharedPreferences(Constans.RESTAURANT_FILE, Context.MODE_PRIVATE)
+        val editor = prefences?.edit()
+        editor?.putString(Constans.RestaurantID, Restaurant.id)
+        editor?.commit()
+
         val intent = Intent(activity, restaurantActivity::class.java)
-        intent.putExtra(Constans.ClickRestaurant, Code)
         startActivity(intent)
     }
+
 
 }

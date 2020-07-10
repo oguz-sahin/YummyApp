@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Sepetim.OrderInformationActivity">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/toolbarColor">
+
+        <ImageView
+            android:id="@+id/backbutton"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_22sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:adjustViewBounds="true"
+            android:onClick="onclick"
+            android:src="@drawable/ic_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/category_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sipariş Bilgileri"
+            android:textColor="#373737"
+            android:textSize="@dimen/_14sdp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/backbutton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.402"
+            app:layout_constraintStart_toEndOf="@+id/backbutton"
+            app:layout_constraintTop_toTopOf="@+id/backbutton"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="60dp"
+            android:fontFamily="@font/exo_semibold"
+            android:text="Sipariş Şekli"
+            android:textColor="#4a4a4a"
+            android:textSize="@dimen/_14sdp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:fontFamily="@font/exo_semibold"
+            android:text="Sipariş Zamanı"
+            android:textColor="#4a4a4a"
+            android:textSize="@dimen/_14sdp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chipGroup" />
+
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView23"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/eatplace"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="@dimen/_120sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:text="Mekanda Ye "
+                android:textAlignment="center"
+                android:textColor="@color/chip_text"
+                app:chipBackgroundColor="@color/chip_style"
+                app:chipCornerRadius="@dimen/_2sdp"
+                app:chipStrokeColor="#8b9b9b9b"
+                app:chipStrokeWidth="1dp">
+
+
+            </com.google.android.material.chip.Chip>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/takeaway"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="@dimen/_120sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:text="Paket olarak al"
+                android:textAlignment="center"
+                android:textColor="@color/chip_text"
+                app:chipBackgroundColor="@color/chip_style"
+                app:chipCornerRadius="@dimen/_2sdp"
+                app:chipStrokeColor="#8b9b9b9b"
+                app:chipStrokeWidth="1dp">
+
+            </com.google.android.material.chip.Chip>
+        </com.google.android.material.chip.ChipGroup>
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroup2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView24"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/today"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="@dimen/_120sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:selectAllOnFocus="true"
+                android:text="Bugün"
+                android:textAlignment="center"
+                android:textColor="@color/chip_text"
+                app:chipBackgroundColor="@color/chip_style"
+                app:chipCornerRadius="@dimen/_2sdp"
+                app:chipStrokeColor="#8b9b9b9b"
+                app:chipStrokeWidth="1dp">
+
+
+            </com.google.android.material.chip.Chip>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/tomorrow"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="@dimen/_120sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:text="Yarın"
+                android:textAlignment="center"
+                android:textColor="@color/chip_text"
+                app:chipBackgroundColor="@color/chip_style"
+                app:chipCornerRadius="@dimen/_2sdp"
+                app:chipStrokeColor="#8b9b9b9b"
+                app:chipStrokeWidth="1dp">
+
+            </com.google.android.material.chip.Chip>
+        </com.google.android.material.chip.ChipGroup>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/time_button"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:backgroundTint="@color/white"
+            android:fontFamily="@font/exo_semibold"
+            android:text="Saat Seçiniz"
+            android:textColor="#4a4a4a"
+            app:layout_constraintEnd_toEndOf="@+id/chipGroup2"
+            app:layout_constraintStart_toStartOf="@+id/chipGroup2"
+            app:layout_constraintTop_toBottomOf="@+id/chipGroup2" />
+
+        <TextView
+            android:id="@+id/textView25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:fontFamily="@font/exo_semibold"
+            android:text="Sepetteki Ürünler"
+            android:textColor="#4a4a4a"
+            android:textSize="@dimen/_14sdp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/time_button"
+            app:layout_constraintTop_toBottomOf="@+id/time_button" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/time_button"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textView25"
+            app:layout_constraintTop_toBottomOf="@+id/textView25"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/makeorderbutton"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginEnd="@dimen/_12sdp"
+        android:layout_marginBottom="@dimen/_12sdp"
+        android:backgroundTint="@color/ColorMain"
+        android:fontFamily="@font/exo_semibold"
+        android:text="Sipariş Oluştur"
+        android:textAllCaps="false" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

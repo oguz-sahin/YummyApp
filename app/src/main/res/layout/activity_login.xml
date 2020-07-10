@@ -50,6 +50,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white"
         android:layout_marginTop="@dimen/_8sdp"
+        android:inputType="textEmailAddress"
         android:hint="@string/epostaText"
         android:textColor="@color/white"
         android:textColorHint="@color/white"

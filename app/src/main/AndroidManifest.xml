@@ -3,6 +3,8 @@
     package="com.example.yummyapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -12,33 +14,46 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".MainPage.Restaurant.MakeCommentActivity">
+        <activity android:name=".Profile.historicalActivity"></activity>
+        <activity android:name=".Profile.YummyAboutActivity" />
+        <activity android:name=".Sepetim.OrderDetailActivity" />
+        <activity android:name=".MainPage.Restaurant.RestaurantPhotosActivity" />
+        <activity android:name=".Sepetim.OrderInformationActivity" />
+        <activity android:name=".MainPage.Talepler.TalepDetayActivity" />
+        <activity android:name=".Profile.Friends.AddFriendsActivity">
 
         </activity>
-        <activity android:name=".MainPage.Restaurant.restaurantActivity"></activity>
+        <activity android:name=".Profile.Friends.Friends_activity" />
+        <activity android:name=".Profile.FavoriteRestaurantActivity">
+
+
+        </activity>
+        <activity android:name=".Profile.InviteandWinActivity" />
+        <activity android:name=".MainPage.Restaurant.order.ProductDetailActivity" />
+        <activity android:name=".MainPage.Restaurant.order.FoodListActivity" />
+        <activity android:name=".MainPage.Restaurant.MakeCommentActivity" />
+        <activity android:name=".MainPage.Restaurant.restaurantActivity" />
         <activity android:name=".DEneme" />
-        <activity android:name=".MainPage.Search.SearchActivity">
-
-
-        </activity>
+        <activity android:name=".MainPage.Search.SearchActivity" />
         <activity android:name=".Register.RegisterActivity" />
         <activity android:name=".OnboardScreen.introScreen" />
-        <activity android:name=".Login.Login">
-
-
-        </activity>
+        <activity android:name=".Login.Login" />
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity android:name=".MainPage.MainActivity" />
+
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
 
+
 </manifest>
+

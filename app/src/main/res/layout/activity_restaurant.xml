@@ -43,6 +43,17 @@
                 app:layout_constraintStart_toEndOf="@+id/back"
                 app:layout_constraintTop_toTopOf="@+id/back" />
 
+            <ImageView
+                android:id="@+id/favorite_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ant_design_heart_filled"
+                app:layout_constraintBottom_toBottomOf="@+id/restaurant_name_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.881"
+                app:layout_constraintStart_toEndOf="@+id/restaurant_name_tv"
+                app:layout_constraintTop_toTopOf="@+id/restaurant_name_tv" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

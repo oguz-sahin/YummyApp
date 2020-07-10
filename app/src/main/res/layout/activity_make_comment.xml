@@ -73,11 +73,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_8sdp"
+            app:errorEnabled="true"
             app:layout_constraintEnd_toStartOf="@+id/guideline17"
             app:layout_constraintStart_toStartOf="@+id/guideline15"
             app:layout_constraintTop_toBottomOf="@+id/textView">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/comment_et"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_130sdp"
                 android:gravity="start" />
@@ -89,7 +91,7 @@
             android:id="@+id/textView11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_8sdp"
             android:fontFamily="@font/exo_semibold"
             android:letterSpacing="0.02"
             android:lineSpacingExtra="@dimen/_2sdp"
@@ -106,6 +108,7 @@
             android:layout_marginStart="@dimen/_4sdp"
             android:letterSpacing="0.02"
             android:lineSpacingExtra="@dimen/_2sdp"
+            android:fontFamily="@font/exo_semibold"
             android:text="0"
             android:textColor="#4a4a4a"
             android:textSize="@dimen/_12sdp"
@@ -116,7 +119,7 @@
         <SeekBar
             android:id="@+id/price_seekBar"
             style="@style/MySeekBar"
-            android:layout_width="@dimen/_120sdp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_6sdp"
             android:max="10"
@@ -132,15 +135,14 @@
             android:id="@+id/textView14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_4sdp"
             android:layout_marginTop="@dimen/_6sdp"
-            android:fontFamily="@font/exo"
+            android:fontFamily="@font/exo_semibold"
             android:letterSpacing="0.02"
             android:lineSpacingExtra="@dimen/_2sdp"
-            android:text="Servis:"
+            android:text="Lezzet:"
             android:textColor="#4a4a4a"
             android:textSize="@dimen/_12sdp"
-            app:layout_constraintStart_toStartOf="@+id/location_seekbar"
+            app:layout_constraintStart_toStartOf="@+id/guideline15"
             app:layout_constraintTop_toBottomOf="@+id/location_seekbar" />
 
         <TextView
@@ -151,6 +153,7 @@
             android:layout_marginTop="@dimen/_6sdp"
             android:letterSpacing="0.02"
             android:lineSpacingExtra="@dimen/_2sdp"
+            android:fontFamily="@font/exo_semibold"
             android:text="0"
             android:textColor="#4a4a4a"
             android:textSize="@dimen/_12sdp"
@@ -162,7 +165,7 @@
 
         <SeekBar
             android:id="@+id/service_seekbar"
-            android:layout_width="@dimen/_120sdp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_6sdp"
             android:max="10"
@@ -177,13 +180,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_6sdp"
-            android:fontFamily="@font/exo"
+            android:fontFamily="@font/exo_semibold"
             android:letterSpacing="0.02"
             android:lineSpacingExtra="@dimen/_2sdp"
             android:text="Konum:"
             android:textColor="#4a4a4a"
             android:textSize="@dimen/_12sdp"
-            app:layout_constraintStart_toStartOf="@+id/service_seekbar"
+            app:layout_constraintStart_toStartOf="@+id/guideline15"
             app:layout_constraintTop_toBottomOf="@+id/service_seekbar" />
 
         <TextView
@@ -193,6 +196,7 @@
             android:layout_marginLeft="@dimen/_4sdp"
             android:letterSpacing="0.02"
             android:lineSpacingExtra="@dimen/_2sdp"
+            android:fontFamily="@font/exo_semibold"
             android:text="0"
             android:textColor="#4a4a4a"
             android:textSize="@dimen/_12sdp"
@@ -202,7 +206,7 @@
 
         <SeekBar
             android:id="@+id/location_seekbar"
-            android:layout_width="@dimen/_120sdp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_6sdp"
             android:max="10"
@@ -217,13 +221,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_6sdp"
-            android:fontFamily="@font/exo"
+            android:fontFamily="@font/exo_semibold"
             android:letterSpacing="0.02"
             android:lineSpacingExtra="@dimen/_2sdp"
-            android:text="Servis:"
+            android:text="Hizmet:"
             android:textColor="#4a4a4a"
             android:textSize="@dimen/_12sdp"
-            app:layout_constraintStart_toStartOf="@+id/price_seekBar"
+            app:layout_constraintStart_toStartOf="@+id/guideline15"
             app:layout_constraintTop_toBottomOf="@+id/price_seekBar" />
 
         <TextView
@@ -233,6 +237,7 @@
             android:layout_marginLeft="@dimen/_4sdp"
             android:letterSpacing="0.02"
             android:lineSpacingExtra="@dimen/_2sdp"
+            android:fontFamily="@font/exo_semibold"
             android:text="0"
             android:textColor="#4a4a4a"
             android:textSize="@dimen/_12sdp"
@@ -241,7 +246,7 @@
 
         <SeekBar
             android:id="@+id/taste_seekBar"
-            android:layout_width="@dimen/_120sdp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_6sdp"
             android:max="10"
@@ -265,6 +270,7 @@
             app:layout_constraintGuide_end="@dimen/_12sdp" />
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/send_button"
             android:layout_width="0dp"
             android:layout_height="@dimen/_40sdp"
             android:layout_marginBottom="@dimen/_12sdp"

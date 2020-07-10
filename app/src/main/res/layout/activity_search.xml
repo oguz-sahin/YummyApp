@@ -44,6 +44,7 @@
                 android:fontFamily="@font/exo"
                 android:hint="@string/Search"
                 android:inputType="text"
+                android:imeOptions="actionSearch"
                 android:textColor="@color/ColorMain"
                 android:textColorHint="@color/grayHint"
                 android:textSize="@dimen/_10sdp"
