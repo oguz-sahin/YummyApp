@@ -12,40 +12,29 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.yummyapp.Constans
-import com.example.yummyapp.MainPage.Model.Data
-import com.example.yummyapp.MainPage.Model.RestaurantModel
+import com.example.yummyapp.MainPage.Model.AllRestaurantData
 import com.example.yummyapp.MainPage.Model.viewModel
 import com.example.yummyapp.MainPage.Restaurant.restaurantActivity
-import com.example.yummyapp.MainPage.Service.ApiClient
-import com.example.yummyapp.MainPage.Service.ApiService
 import com.example.yummyapp.R
-import kotlinx.android.synthetic.main.fragment_popular.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
-/**
- * A simple [Fragment] subclass.
- */
-class PopularFragment : Fragment(), itemClick {
+
+class PopularFragment(var searchWord: String) : Fragment(), itemClick {
     private lateinit var vm: viewModel
-    private val apiClient: ApiService by lazy { ApiClient.getApiClient() }
-    private var code = 0
+    private lateinit var rv: RecyclerView
+    var code = 0
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_popular, container, false)
+        val view = inflater.inflate(R.layout.fragment_popular, container, false)
+
+        rv = view.findViewById(R.id.recyclerview)
+
+        return view
     }
 
-
-    override fun click(Code: Data) {
-        val intent = Intent(activity, restaurantActivity::class.java)
-        intent.putExtra(Constans.ClickRestaurant, Code)
-        startActivity(intent)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,44 +47,56 @@ class PopularFragment : Fragment(), itemClick {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val tokenPref =
+            activity!!.getSharedPreferences(Constans.PREFS_FILENAME, Context.MODE_PRIVATE)
+        val token = tokenPref.getString(Constans.KEY_NAME, "")
+
+        Log.e("searchWord popular", searchWord)
+
+
 
         vm.Code.observe(requireActivity(), Observer {
             code = it
 
-        })
+            val array = ArrayList<String>()
+            array.add("0")
+            array.add("4")
+            Log.e("array", array.toString())
 
-        val tokenPref =
-            activity!!.getSharedPreferences(Constans.PREFS_FILENAME, Context.MODE_PRIVATE)
-        val token = tokenPref.getString(Constans.KEY_NAME, "")
-        vm.getRestaurantsWithToken("Bearer " + token)
+            vm.getPopularestaurants(token!!, "istanbul", searchWord, "asc", array)
 
-        apiClient.getRestaurants("Baerer " + token).enqueue(object : Callback<RestaurantModel> {
-            override fun onFailure(call: Call<RestaurantModel>, t: Throwable) {
-                TODO("Not yet implemented")
-            }
+            vm.popularRestaurants.observe(this.activity!!, Observer {
 
-            override fun onResponse(
-                call: Call<RestaurantModel>,
-                response: Response<RestaurantModel>
-            ) {
                 if (code == 1) {
-                    recyclerview.layoutManager = GridLayoutManager(activity, 2)
-                    Log.e("like", response.body()?.data.toString())
-                    var response = response.body()?.data
-                    recyclerview.adapter = GridAdapter(response!!, activity!!, this@PopularFragment)
+                    rv.layoutManager = GridLayoutManager(activity, 2)
+                    Log.e("popular", it.data.toString())
+                    var response = it.data
+                    rv.adapter = GridAdapter(response, activity!!, this@PopularFragment)
                 } else if (code == 2) {
-                    recyclerview.layoutManager = LinearLayoutManager(activity)
-                    recyclerview.adapter =
-                        RestaurantAdapter(response.body()!!.data, this@PopularFragment)
+                    rv.layoutManager = LinearLayoutManager(activity)
+                    rv.adapter =
+                        RestaurantAdapter(it.data, this@PopularFragment)
 
                 }
-            }
+
+            })
 
 
         })
-
 
     }
 
+    override fun click(Restaurant: AllRestaurantData) {
+
+        val prefences =
+            activity?.getSharedPreferences(Constans.RESTAURANT_FILE, Context.MODE_PRIVATE)
+        val editor = prefences?.edit()
+        editor?.putString(Constans.RestaurantID, Restaurant.id)
+        editor?.commit()
+
+        val intent = Intent(activity, restaurantActivity::class.java)
+        startActivity(intent)
+
+    }
 
 }

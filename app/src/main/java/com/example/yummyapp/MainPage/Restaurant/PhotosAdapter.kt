@@ -11,7 +11,11 @@ import com.example.yummyapp.MainPage.Model.Photo
 import com.example.yummyapp.R
 import kotlinx.android.synthetic.main.item_about.view.*
 
-class PhotosAdapter(var List: List<Photo>, var context: Context) :
+class PhotosAdapter(
+    var List: List<Photo>,
+    var context: Context,
+    var itemClickPhoto: itemClickPhoto
+) :
     RecyclerView.Adapter<PhotosAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -28,6 +32,9 @@ class PhotosAdapter(var List: List<Photo>, var context: Context) :
         Glide.with(holder.iv.context)
             .load("https://yummy.wookweb.com/assets/img/restoran/" + List[position].image)
             .dontAnimate().into(holder.iv)
+        holder.itemView.setOnClickListener {
+            itemClickPhoto.İtemClick()
+        }
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
