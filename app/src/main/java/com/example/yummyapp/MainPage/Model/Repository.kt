@@ -4,6 +4,7 @@ import android.app.Application
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
+import com.example.yummyapp.MainPage.Service.ApiClient
 import com.example.yummyapp.MainPage.Service.ApiService
 import com.google.gson.Gson
 import retrofit2.Call
@@ -15,8 +16,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class Repository(val application: Application) {
 
+    val apiClient: ApiService by lazy { ApiClient.getApiClient() }
+
     val showProgress = MutableLiveData<Boolean>()
     val restaurants = MutableLiveData<RestaurantModel>()
+    val allRestaurants = MutableLiveData<AllRestaurantModel>()
+    val popularRestaurants = MutableLiveData<AllRestaurantModel>()
+    val topRestaurants = MutableLiveData<AllRestaurantModel>()
     /* val clickCode= MutableLiveData<Int>()
      fun CodeControl(Code:Int){
      clickCode.value=Code
@@ -50,6 +56,88 @@ class Repository(val application: Application) {
             }
 
         })
+
+    }
+
+    fun getAllRestaurants(
+        token: String,
+        city: String,
+        query: String,
+        order: String,
+        filter: ArrayList<String>
+    ) {
+
+        apiClient.getAllRestaurants("Bearer " + token, city, query, order, filter)
+            .enqueue(object : Callback<AllRestaurantModel> {
+                override fun onFailure(call: Call<AllRestaurantModel>, t: Throwable) {
+                    Log.e("onfaiulere", t.message)
+                }
+
+                override fun onResponse(
+                    call: Call<AllRestaurantModel>,
+                    response: Response<AllRestaurantModel>
+                ) {
+                    Log.e("all restaurants", response.body().toString())
+                    allRestaurants.value = response.body()
+
+                }
+
+            })
+
+
+    }
+
+    fun getPopularRestaurants(
+        token: String,
+        city: String,
+        query: String,
+        order: String,
+        filter: ArrayList<String>
+    ) {
+
+        apiClient.getPopularRestaurants("Bearer " + token, city, query, order, filter)
+            .enqueue(object : Callback<AllRestaurantModel> {
+                override fun onFailure(call: Call<AllRestaurantModel>, t: Throwable) {
+                    Log.e("onfaiulere", t.message)
+                }
+
+                override fun onResponse(
+                    call: Call<AllRestaurantModel>,
+                    response: Response<AllRestaurantModel>
+                ) {
+                    Log.e("popular restaurants", response.body().toString())
+                    popularRestaurants.value = response.body()
+                }
+
+            })
+
+
+    }
+
+    fun getTopRestaurants(
+        token: String,
+        city: String,
+        query: String,
+        order: String,
+        filter: ArrayList<String>
+    ) {
+
+        apiClient.getTopRestaurants("Bearer " + token, city, query, order, filter)
+            .enqueue(object : Callback<AllRestaurantModel> {
+                override fun onFailure(call: Call<AllRestaurantModel>, t: Throwable) {
+                    Log.e("onfaiulere", t.message)
+                }
+
+                override fun onResponse(
+                    call: Call<AllRestaurantModel>,
+                    response: Response<AllRestaurantModel>
+                ) {
+                    Log.e("top", response.body().toString())
+                    topRestaurants.value = response.body()
+                }
+
+            })
+
 
     }
 

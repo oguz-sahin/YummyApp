@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.yummyapp.MainPage.Model.Data
+import com.example.yummyapp.MainPage.Model.AllRestaurantData
 import com.example.yummyapp.R
 import kotlinx.android.synthetic.main.item_list.view.*
 
-class RestaurantAdapter(var List: List<Data>, var itemClick: itemClick) :
+class RestaurantAdapter(var List: List<AllRestaurantData>, var itemClick: itemClick) :
     RecyclerView.Adapter<RestaurantAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -36,11 +36,11 @@ class RestaurantAdapter(var List: List<Data>, var itemClick: itemClick) :
         }
 
 
-        holder.itemView.setOnClickListener {
+        /*holder.itemView.setOnClickListener {
 
-            itemClick.click(List[position])
+             itemClick.click(List[position])
 
-        }
+         }*/
 
     }
 
