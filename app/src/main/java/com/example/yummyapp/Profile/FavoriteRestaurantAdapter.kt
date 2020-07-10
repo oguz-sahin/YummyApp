@@ -1,4 +1,4 @@
-package com.example.yummyapp.MainPage.Search
+package com.example.yummyapp.Profile
 
 import android.content.Context
 import android.util.Log
@@ -7,21 +7,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.yummyapp.MainPage.Model.AllRestaurantData
 import com.example.yummyapp.R
-import kotlinx.android.synthetic.main.item_grid.view.*
+import kotlinx.android.synthetic.main.item_favoriterestaurant.view.*
 
-
-class GridAdapter(
-    var List: List<AllRestaurantData>,
+class FavoriteRestaurantAdapter(
+    var List: ArrayList<com.example.yummyapp.Profile.Model.Data>,
     var context: Context,
-    var itemClick: itemClick
+    var onClickFavoriteRestaurant: OnClickFavoriteRestaurant
 ) :
-    RecyclerView.Adapter<GridAdapter.ViewHolder>() {
-
+    RecyclerView.Adapter<FavoriteRestaurantAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_grid, parent, false)
-        return ViewHolder(view)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_favoriterestaurant, parent, false)
+        return ViewHolder(
+            view
+        )
     }
 
     override fun getItemCount(): Int = List.size
@@ -37,10 +37,11 @@ class GridAdapter(
         holder.restaurant_name_tv.text = List[position].name
         holder.kitchen_tv.text = List[position].kitchenType
 
-        holder.itemView.setOnClickListener {
 
-            itemClick.click(List[position])
+        holder.itemView.setOnClickListener {
+            onClickFavoriteRestaurant.onClick(List[position])
         }
+
 
     }
 
@@ -54,6 +55,8 @@ class GridAdapter(
         var rate_tv = view.rate_tv
         var km_tv = view.km_tv
 
+
     }
+
 
 }
