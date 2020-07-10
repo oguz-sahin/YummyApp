@@ -1,6 +1,7 @@
 package com.example.yummyapp.MainPage.Restaurant
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,20 +11,26 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.yummyapp.Constans
+import com.example.yummyapp.MainPage.Restaurant.Mvvm.restaurantViewModel
+import com.example.yummyapp.MainPage.Restaurant.order.FoodListActivity
+import com.example.yummyapp.MainPage.Restaurant.order.Utill.ItemClick
 import com.example.yummyapp.R
-import kotlinx.android.synthetic.main.fragment_menu.*
 
 private lateinit var vm: restaurantViewModel
+private lateinit var rv: RecyclerView
+private var restaurantId = "as"
 
-class MenuFragment : Fragment() {
+class MenuFragment : Fragment(), ItemClick {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_menu, container, false)
+        val view = inflater.inflate(R.layout.fragment_menu, container, false)
+        rv = view.findViewById(R.id.recyclerview)
+        return view
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,29 +43,44 @@ class MenuFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var id = "as"
-        vm.data.observe(requireActivity(), Observer {
-            id = it.id
-        })
+
+        /* vm.data.observe(requireActivity(), Observer {
+             restaurantId=it.id
+         })*/
+
+        //RestaurantId
+        val prefences =
+            activity?.getSharedPreferences(Constans.RESTAURANT_FILE, Context.MODE_PRIVATE)
+        val restaurantId = prefences?.getString(Constans.RestaurantID, "0")
+
+
 
 
         val tokenPref =
             activity!!.getSharedPreferences(Constans.PREFS_FILENAME, Context.MODE_PRIVATE)
         val token = tokenPref.getString(Constans.KEY_NAME, "")
 
-        Log.e("id", id)
+        Log.e("id", restaurantId)
 
-        vm.getRestaurantMenuCategories(id, token!!)
+        vm.getRestaurantMenuCategories(restaurantId!!, token!!)
         vm.restaurantMenuCategories.observe(activity!!, Observer {
 
             Log.e("category resposne", it.data.toString())
-            recyclerview.adapter = CategoriesAdapter(it.data)
-            recyclerview.layoutManager = GridLayoutManager(activity, 2)
+            rv.adapter = CategoriesAdapter(it.data, this)
+            rv.layoutManager = GridLayoutManager(activity, 2)
 
 
         })
 
 
     }
+
+    override fun getId(CategoryId: String) {
+        val intent = Intent(this.context, FoodListActivity::class.java)
+        intent.putExtra(Constans.CategoryId, CategoryId)
+        startActivity(intent)
+
+    }
+
 
 }

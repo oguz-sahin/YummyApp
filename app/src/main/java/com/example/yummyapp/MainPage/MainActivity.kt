@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.action_talep -> {
-                    fragmentTransact(ProfileFragment())
+                    fragmentTransact(TaleplerFragment())
 
                     true
                 }
