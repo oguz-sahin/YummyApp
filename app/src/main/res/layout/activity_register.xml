@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/loginback"
+    tools:context=".Register.RegisterActivity">
+
+
+    <TextView
+
+        android:id="@+id/lezzet_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="@dimen/_25sdp"
+        android:fontFamily="@font/exo"
+        android:letterSpacing="0.02"
+        android:lineHeight="@dimen/_40sdp"
+        android:lineSpacingExtra="@dimen/_1sdp"
+        android:text="@string/enLezzetliLoginText"
+        android:textColor="@color/White"
+        android:textSize="@dimen/_35sdp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:fontFamily="@font/exo"
+        android:id="@+id/kayitol_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:textStyle="bold"
+        android:text="@string/KayıtOlText"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_22sdp"
+        app:layout_constraintStart_toStartOf="@+id/name_et"
+        app:layout_constraintTop_toBottomOf="@+id/lezzet_tv" />
+
+    <com.google.android.material.textfield.TextInputEditText
+
+        android:fontFamily="@font/exo"
+        android:id="@+id/eposta_et"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:backgroundTint="@color/white"
+        android:hint="@string/epostaText"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textCursorDrawable="@drawable/cursor"
+        android:textSize="@dimen/_18sdp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/name_et"
+        app:layout_constraintTop_toBottomOf="@+id/name_et" />
+
+    <com.google.android.material.textfield.TextInputEditText
+
+        android:fontFamily="@font/exo"
+        android:id="@+id/sifre_et"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:backgroundTint="@color/white"
+        android:hint="@string/sifreText"
+        android:inputType="textPassword"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="@dimen/_18sdp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/eposta_et"
+        app:layout_constraintTop_toBottomOf="@+id/eposta_et" />
+
+
+    <com.google.android.material.textfield.TextInputEditText
+
+        android:fontFamily="@font/exo"
+        android:id="@+id/phone_et"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:backgroundTint="@color/white"
+        android:hint="@string/phone"
+        android:inputType="number"
+        android:maxLength="11"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="@dimen/_18sdp"
+        app:layout_constraintEnd_toEndOf="@+id/sifre_et"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/sifre_et"
+        app:layout_constraintTop_toBottomOf="@+id/sifre_et" />
+
+    <com.google.android.material.textfield.TextInputEditText
+
+        android:fontFamily="@font/exo"
+        android:id="@+id/name_et"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:backgroundTint="@color/white"
+        android:hint="@string/name"
+        android:inputType="text"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="@dimen/_18sdp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/kayitol_tv" />
+
+    <com.google.android.material.button.MaterialButton
+        android:fontFamily="@font/exo"
+        android:id="@+id/kayitOl_button"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_marginTop="@dimen/_60sdp"
+        android:backgroundTint="@color/ColorMain"
+        android:text="@string/KayıtOlText"
+        app:layout_constraintEnd_toEndOf="@+id/phone_et"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/phone_et"
+        app:layout_constraintTop_toBottomOf="@+id/sifre_et" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/_15sdp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/_20sdp" />
+
+    <TextView
+
+        android:id="@+id/hesapvar_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_18sdp"
+        android:layout_marginEnd="@dimen/_1sdp"
+        android:layout_marginBottom="12dp"
+        android:fontFamily="@font/exo"
+        android:text="@string/HesabınızvarmıText"
+        android:textColor="@color/White"
+        android:textSize="@dimen/_16sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/girisYap_button"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kayitOl_button" />
+
+    <com.google.android.material.button.MaterialButton
+        android:fontFamily="@font/exo"
+        android:id="@+id/girisYap_button"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/girisYapText"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_16sdp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/hesapvar_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/hesapvar_tv" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

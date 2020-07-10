@@ -60,6 +60,8 @@ public class OnSwipeTouchListener implements View.OnTouchListener {
                         onSwipeBottom();
                     } else {
                         onSwipeTop();
+
+
                     }
                     result = true;
                 }
