@@ -1,21 +1,19 @@
-package com.example.yummyapp.MainPage.Model
+package com.example.yummyapp.Profile.Model
 
 
 import com.google.gson.annotations.SerializedName
 
-data class DataXX(
+data class Data(
     @SerializedName("about")
     var about: String,
     @SerializedName("address")
     var address: String,
     @SerializedName("admin_not")
     var adminNot: String,
+    @SerializedName("date")
+    var date: String,
     @SerializedName("details")
     var details: Any,
-    @SerializedName("distance")
-    var distance: String,
-    @SerializedName("favorite")
-    var favorite: Boolean,
     @SerializedName("id")
     var id: String,
     @SerializedName("image")
@@ -40,8 +38,6 @@ data class DataXX(
     var openHours: Any,
     @SerializedName("phone")
     var phone: String,
-    @SerializedName("rate")
-    var rate: RateX,
     @SerializedName("status")
     var status: String,
     @SerializedName("teslimat")

@@ -1,14 +1,13 @@
-package com.example.yummyapp.MainPage.Model
+package com.example.yummyapp.Sepetim
 
 
 import com.google.gson.annotations.SerializedName
 
-//restoranta gelen yorumları çeken model
-data class CommentModel(
+data class BasketCompleteModel(
     @SerializedName("data")
-    var `data`: List<Comment>,
+    var `data`: Int,
     @SerializedName("message")
-    var message: Any,
+    var message: String,
     @SerializedName("status")
     var status: Boolean
 )

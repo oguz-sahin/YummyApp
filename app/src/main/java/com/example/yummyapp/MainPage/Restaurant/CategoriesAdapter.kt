@@ -6,11 +6,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.yummyapp.MainPage.Model.Categories
+import com.example.yummyapp.MainPage.Restaurant.order.Utill.ItemClick
 import com.example.yummyapp.R
 import kotlinx.android.synthetic.main.item_menu.view.*
 
 
-class CategoriesAdapter(var List: List<Categories>) :
+class CategoriesAdapter(var List: List<Categories>, var ItemClick: ItemClick) :
     RecyclerView.Adapter<CategoriesAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -28,6 +29,9 @@ class CategoriesAdapter(var List: List<Categories>) :
             .load("https://yummy.wookweb.com/assets/img/categories/" + List[position].image)
             .into(holder.image)
         holder.category.text = List[position].name
+        holder.itemView.setOnClickListener {
+            ItemClick.getId(List[position].id)
+        }
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {

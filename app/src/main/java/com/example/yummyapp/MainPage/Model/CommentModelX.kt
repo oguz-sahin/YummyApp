@@ -3,12 +3,13 @@ package com.example.yummyapp.MainPage.Model
 
 import com.google.gson.annotations.SerializedName
 
-//restoranta gelen yorumları çeken model
-data class CommentModel(
+
+//Yorum yaptıktan sonra gelen cevap
+data class CommentModelX(
     @SerializedName("data")
-    var `data`: List<Comment>,
+    var `data`: DataX,
     @SerializedName("message")
-    var message: Any,
+    var message: String,
     @SerializedName("status")
     var status: Boolean
 )
