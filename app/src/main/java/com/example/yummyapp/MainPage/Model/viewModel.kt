@@ -10,6 +10,9 @@ class viewModel(application: Application) : AndroidViewModel(application) {
     private val repository = Repository(application)
     val showProgress: LiveData<Boolean>
     val restaurants: LiveData<RestaurantModel>
+    val allRestaurants: LiveData<AllRestaurantModel>
+    val popularRestaurants: LiveData<AllRestaurantModel>
+    val topRestaurants: LiveData<AllRestaurantModel>
 
     // val code:LiveData<Int>
     val Code = MutableLiveData<Int>()
@@ -22,6 +25,9 @@ class viewModel(application: Application) : AndroidViewModel(application) {
     init {
         this.showProgress = repository.showProgress
         this.restaurants = repository.restaurants
+        this.allRestaurants = repository.allRestaurants
+        this.popularRestaurants = repository.popularRestaurants
+        this.topRestaurants = repository.topRestaurants
         //this.code=repository.clickCode
     }
 
@@ -32,6 +38,41 @@ class viewModel(application: Application) : AndroidViewModel(application) {
     fun getRestaurantsWithToken(token: String) {
         repository.getRestaurantWithToken(token)
     }
+
+    fun getAllRestaurants(
+        token: String,
+        city: String,
+        query: String,
+        order: String,
+        filter: ArrayList<String>
+    ) {
+
+        repository.getAllRestaurants(token, city, query, order, filter)
+    }
+
+    fun getPopularestaurants(
+        token: String,
+        city: String,
+        query: String,
+        order: String,
+        filter: ArrayList<String>
+    ) {
+
+        repository.getPopularRestaurants(token, city, query, order, filter)
+    }
+
+    fun getToprestaurants(
+        token: String,
+        city: String,
+        query: String,
+        order: String,
+        filter: ArrayList<String>
+    ) {
+
+        repository.getTopRestaurants(token, city, query, order, filter)
+    }
+
+
     /*/ fun CodeControl(Code:Int){
          repository.CodeControl(Code)
      }*/
